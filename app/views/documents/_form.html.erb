@@ -1,0 +1,15 @@
+<% if @errors %>
+  <h4>
+    <%= pluralize(@errors.count, "errors") %> prohibited this category from being saved
+  </h4>
+  <ul>
+    <% @errors.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @document, :html => {:multipart => true}, class: "form-horizontal" do |f| %>
+  <div class="form-group center-block" style="border: 2px solid blue"><%= f.file_field :original %></div>
+  <%= f.submit "Convert File", class: "btn btn-primary" %>
+<% end %>
